@@ -1,0 +1,85 @@
+import React, { useEffect, useState } from "react";
+import Section1 from "./Components/Section1";
+import Section2 from "./Components/Section2";
+import Indexbtn from "./Components/Indexbtn";
+
+const App = () => {
+  const [activecategory, setactiveCategory] = useState("all");
+  const [value, setValue] = useState("");
+  const [cart, setCart] = useState(0);
+  const [card2, setCard] = useState([]);
+  const [pro, setPro] = useState([]);
+  const [index, setIndex] = useState(0);
+
+  useEffect(
+    function () {
+      const fetchdata = async () => {
+        const response = await fetch(
+          `https://dummyjson.com/products?skip=${index * 20}&limit=35`,
+        );
+        const data = await response.json();
+        setPro(data.products);
+      };
+      fetchdata();
+    },
+    [index],
+  );
+
+  const seen = new Set(["all"]);
+  pro.forEach((item) => {
+    if (!seen.has(item.category)) {
+      seen.add(item.category);
+    }
+  });
+
+  const category = Array.from(seen);
+
+  const value2 = (elem) => {
+    setCard((card) => [...card, elem]);
+  };
+  const enableBtn = (e) => {
+    let cart = document.querySelector("#cart");
+  };
+  const filtered = pro
+    .filter(
+      (pro) => activecategory === "all" || activecategory === pro.category,
+    )
+    .filter((pro) => pro.title.toLowerCase().includes(value.toLowerCase()));
+  const cartItem = (e) => {
+    setCart(cart + 1);
+    e.target.disabled = true;
+  };
+  const removefromCart = (id) => {
+    const newCard = card2.filter((item) => item.id != id);
+    setCart(cart - 1);
+    setCard(newCard);
+  };
+
+  return (
+    <div>
+      <div id="main-div">
+        <Section1
+          pr0ducts={pro}
+          category={category}
+          activecategory={activecategory}
+          setactiveCategory={setactiveCategory}
+          filtered={filtered}
+          value={value}
+          setValue={setValue}
+          cart={cart}
+          cartItem={cartItem}
+          card2={card2}
+          value2={value2}
+          removefromCart={removefromCart}
+          setCard={setCard}
+          enableBtn={enableBtn}
+        />
+      </div>
+      <div>
+        <Indexbtn index={index} setIndex={setIndex} setPro={setPro} pro={pro} />
+      </div>
+    </div>
+  );
+};
+
+export default App;
