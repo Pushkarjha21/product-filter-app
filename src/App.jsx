@@ -49,8 +49,6 @@ const App = () => {
     if (activefilter == "From Low to High") return a.price - b.price;
     return 0;
   });
-  console.log("active filter:", activefilter);
-  console.log("sorted", sorted);
 
   const cartItem = (e) => {
     setCart(cart + 1);
@@ -84,7 +82,7 @@ const App = () => {
           sorted={sorted}
         />
       </div>
-      <div>
+      <div id="index-btn">
         <Indexbtn index={index} setIndex={setIndex} setPro={setPro} pro={pro} />
       </div>
     </div>

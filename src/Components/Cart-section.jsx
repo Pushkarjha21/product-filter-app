@@ -1,4 +1,5 @@
 import React from "react";
+import Section2 from "./Section2";
 const Cartsection = (props) => {
   const disableCart = () => {
     let disablecart = document.querySelector("#card-div");
@@ -28,9 +29,12 @@ const Cartsection = (props) => {
             </span>
             <div id="close-btn">
               <button
-                onClick={(e) => {
+                onClick={() => {
                   props.removefromCart(item.id);
-                  props.enableBtn(e);
+                  let enabledbtn = document.querySelector("#cart");
+                  enabledbtn.disabled = false;
+                  enabledbtn.innertext = "Add to cart";
+                  console.log(enabledbtn.disabled);
                 }}
                 id="btn-close"
               >

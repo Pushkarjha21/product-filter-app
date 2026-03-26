@@ -3,18 +3,6 @@ import Button from "./Button";
 import Cartsection from "./Cart-section";
 
 const Section1upper = (props) => {
-  // pro.sort((a, b) => b.price - a.price);
-  // const sorted = (e) => {
-  //   if ((e.target.value = "From High to Low")) {
-  //     [...props.filtered].sort((a, b) => a.price - b.price);
-  //     console.log(props.filtered[0].price);
-  //   } else if ((e.target.value = "From Low to High")) {
-  //     [...props.filtered].sort((a, b) => b.price - a.price);
-  //     console.log(props.filtered[0].price);
-  //   }
-  // };
-  console.log(props.sorted);
-
   const cartSection = () => {
     let cardDiv = document.querySelector("#card-div");
     cardDiv.style.animation = " slideRight 0.5s ease forwards";
@@ -29,9 +17,9 @@ const Section1upper = (props) => {
         <h1 id="title">Prodcut Lists and Filter App</h1>
         <span id="upper-span">
           <button onClick={cartSection} className="btn1">
-            ({props.cart})cart
+            ({props.cart})<br />
+            🛍️ cart
           </button>
-          <button className="btn1">total</button>
         </span>
       </div>
       <form>
