@@ -10,6 +10,7 @@ const App = () => {
   const [card2, setCard] = useState([]);
   const [pro, setPro] = useState([]);
   const [index, setIndex] = useState(0);
+  const [activefilter, setactiveFilter] = useState("Default");
 
   useEffect(
     function () {
@@ -37,14 +38,20 @@ const App = () => {
   const value2 = (elem) => {
     setCard((card) => [...card, elem]);
   };
-  const enableBtn = (e) => {
-    let cart = document.querySelector("#cart");
-  };
+
   const filtered = pro
     .filter(
       (pro) => activecategory === "all" || activecategory === pro.category,
     )
     .filter((pro) => pro.title.toLowerCase().includes(value.toLowerCase()));
+  const sorted = [...filtered].sort((a, b) => {
+    if (activefilter == "From High to Low") return b.price - a.price;
+    if (activefilter == "From Low to High") return a.price - b.price;
+    return 0;
+  });
+  console.log("active filter:", activefilter);
+  console.log("sorted", sorted);
+
   const cartItem = (e) => {
     setCart(cart + 1);
     e.target.disabled = true;
@@ -59,7 +66,7 @@ const App = () => {
     <div>
       <div id="main-div">
         <Section1
-          pr0ducts={pro}
+          products={pro}
           category={category}
           activecategory={activecategory}
           setactiveCategory={setactiveCategory}
@@ -72,7 +79,9 @@ const App = () => {
           value2={value2}
           removefromCart={removefromCart}
           setCard={setCard}
-          enableBtn={enableBtn}
+          activefilter={activefilter}
+          setactiveFilter={setactiveFilter}
+          sorted={sorted}
         />
       </div>
       <div>

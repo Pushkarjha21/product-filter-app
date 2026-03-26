@@ -3,6 +3,18 @@ import Button from "./Button";
 import Cartsection from "./Cart-section";
 
 const Section1upper = (props) => {
+  // pro.sort((a, b) => b.price - a.price);
+  // const sorted = (e) => {
+  //   if ((e.target.value = "From High to Low")) {
+  //     [...props.filtered].sort((a, b) => a.price - b.price);
+  //     console.log(props.filtered[0].price);
+  //   } else if ((e.target.value = "From Low to High")) {
+  //     [...props.filtered].sort((a, b) => b.price - a.price);
+  //     console.log(props.filtered[0].price);
+  //   }
+  // };
+  console.log(props.sorted);
+
   const cartSection = () => {
     let cardDiv = document.querySelector("#card-div");
     cardDiv.style.animation = " slideRight 0.5s ease forwards";
@@ -46,9 +58,22 @@ const Section1upper = (props) => {
         </span>
         <span id="sort-section">
           <h6>Sort by:</h6>
-          <select id="range" name="range">
-            <option value="From high to Low">From High to low</option>
-            <option value="From Low to High">From Low to High</option>
+          <select
+            onChange={(e) => {
+              console.log("selected value:", e.target.value);
+
+              props.setactiveFilter(e.target.value);
+            }}
+            id="range"
+            name="range"
+          >
+            <option value="Default">Default</option>
+            <option id="high" value="From High to Low">
+              From High to low
+            </option>
+            <option id="low" value="From Low to High">
+              From Low to High
+            </option>
           </select>
         </span>
       </div>

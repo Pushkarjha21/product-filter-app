@@ -16,10 +16,15 @@ const Section1 = (props) => {
           setValue={props.setValue}
           setCart={props.setCart}
           cart={props.cart}
+          filterbyPrice={props.filterbyPrice}
+          products={props.products}
+          setactiveFilter={props.setactiveFilter}
+          activefilter={props.activefilter}
+          sorted={props.sorted}
         />
 
         <div id="section">
-          {props.filtered.map(function (elem, idx) {
+          {props.sorted.map(function (elem, idx) {
             return (
               <Section2
                 key={idx}
@@ -35,6 +40,7 @@ const Section1 = (props) => {
                 value2={props.value2}
                 filtered={props.filtered}
                 product={elem}
+                filterbyPrice={props.filterByPrice}
               />
             );
           })}
