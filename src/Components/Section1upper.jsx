@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import Button from "./Button";
-import Cartsection from "./Cart-section";
 
 const Section1upper = (props) => {
   const cartSection = () => {
-    let cardDiv = document.querySelector("#card-div");
-    cardDiv.style.animation = " slideRight 0.5s ease forwards";
-    cardDiv.style.animation = " animation-delay: 0.2s;";
+    const cardDiv = document.querySelector("#card-div");
+    cardDiv.classList.add("open");
   };
   const changedText = (e) => {
     props.setValue(e.target.value);
@@ -65,7 +63,6 @@ const Section1upper = (props) => {
           </select>
         </span>
       </div>
-      <hr />
     </div>
   );
 };

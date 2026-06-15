@@ -1,7 +1,6 @@
 import Section2 from "./Section2";
 import Section1upper from "./Section1upper";
 import Cartsection from "./Cart-section";
-import { useState } from "react";
 
 const Section1 = (props) => {
   return (
@@ -14,7 +13,6 @@ const Section1 = (props) => {
           filtered={props.filtered}
           value={props.value}
           setValue={props.setValue}
-          setCart={props.setCart}
           cart={props.cart}
           filterbyPrice={props.filterbyPrice}
           products={props.products}
@@ -36,10 +34,10 @@ const Section1 = (props) => {
                 category={elem.category}
                 value={props.value}
                 setValue={props.setValue}
-                cartItem={props.cartItem}
                 value2={props.value2}
                 filtered={props.filtered}
                 product={elem}
+                inCart={props.card2.some((item) => item.id === elem.id)}
                 filterbyPrice={props.filterByPrice}
               />
             );

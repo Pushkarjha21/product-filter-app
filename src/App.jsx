@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Section1 from "./Components/Section1";
-import Section2 from "./Components/Section2";
 import Indexbtn from "./Components/Indexbtn";
 
 const App = () => {
   const [activecategory, setactiveCategory] = useState("all");
   const [value, setValue] = useState("");
-  const [cart, setCart] = useState(0);
   const [card2, setCard] = useState([]);
   const [pro, setPro] = useState([]);
   const [index, setIndex] = useState(0);
   const [activefilter, setactiveFilter] = useState("Default");
+  const cart = card2.length;
 
   useEffect(
     function () {
@@ -36,7 +35,12 @@ const App = () => {
   const category = Array.from(seen);
 
   const value2 = (elem) => {
-    setCard((card) => [...card, elem]);
+    setCard((card) => {
+      if (card.some((item) => item.id === elem.id)) {
+        return card;
+      }
+      return [...card, elem];
+    });
   };
 
   const filtered = pro
@@ -50,14 +54,8 @@ const App = () => {
     return 0;
   });
 
-  const cartItem = (e) => {
-    setCart(cart + 1);
-    e.target.disabled = true;
-  };
   const removefromCart = (id) => {
-    const newCard = card2.filter((item) => item.id != id);
-    setCart(cart - 1);
-    setCard(newCard);
+    setCard((card) => card.filter((item) => item.id !== id));
   };
 
   return (
@@ -72,7 +70,6 @@ const App = () => {
           value={value}
           setValue={setValue}
           cart={cart}
-          cartItem={cartItem}
           card2={card2}
           value2={value2}
           removefromCart={removefromCart}

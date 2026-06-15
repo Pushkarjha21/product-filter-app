@@ -1,16 +1,14 @@
 import React from "react";
 
 const Button = (props) => {
+  const active = props.activecategory === props.categoryname;
   return (
     <button
+      type="button"
       onClick={() => {
         props.setactiveCategory(props.categoryname);
       }}
-      style={{
-        background:
-          props.activecategory === props.categoryname ? "#87ceeb" : "white",
-      }}
-      className="btn2"
+      className={active ? "filter-button active" : "filter-button"}
     >
       {props.categoryname}
     </button>
