@@ -5,8 +5,8 @@ const Error = () => {
     <div>
       <div id="background"></div>
       <div className="top">
-        <h1>404</h1>
-        <h3>page not found</h3>
+        <h1 id="errorh1">404</h1>
+        <h3 id="errorh3">page not found</h3>
       </div>
       <div className="container">
         <div className="ghost-copy">
@@ -25,7 +25,7 @@ const Error = () => {
         <div className="shadow"></div>
       </div>
       <div className="bottom">
-        <p>Boo, looks like a ghost stole this page!</p>
+        <p id="errorp">Boo, looks like a ghost stole this page!</p>
 
         <div className="buttons">
           <button className="btn">Back</button>
