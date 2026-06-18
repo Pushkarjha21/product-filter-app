@@ -32,12 +32,6 @@ const Error = () => {
           <button className="btn">Home</button>
         </div>
       </div>
-
-      <footer>
-        <p>
-          made by <a href="https://codepen.io/juliepark"> julie</a> ♡
-        </p>
-      </footer>
     </div>
   );
 };

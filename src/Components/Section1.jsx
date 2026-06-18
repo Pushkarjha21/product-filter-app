@@ -19,6 +19,8 @@ const Section1 = (props) => {
           setactiveFilter={props.setactiveFilter}
           activefilter={props.activefilter}
           sorted={props.sorted}
+          wishItem={props.wishItem}
+          valueForWishlist={props.valueForWishlist}
         />
 
         <div id="section">
@@ -39,6 +41,9 @@ const Section1 = (props) => {
                 product={elem}
                 inCart={props.card2.some((item) => item.id === elem.id)}
                 filterbyPrice={props.filterByPrice}
+                wishItem={props.wishItem}
+                valueForWishlist={props.valueForWishlist}
+                handleRemove={props.handleRemove}
               />
             );
           })}
@@ -48,7 +53,6 @@ const Section1 = (props) => {
         setCard={props.setCard}
         value2={props.value2}
         card2={props.card2}
-        cartItem={props.cartItem}
         removefromCart={props.removefromCart}
         enableBtn={props.enableBtn}
       />
