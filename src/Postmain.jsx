@@ -19,11 +19,15 @@ const Postmain = () => {
   useEffect(
     function () {
       const fetchdata = async () => {
-        const response = await fetch(
-          `https://dummyjson.com/products?skip=${index * 20}&limit=35`,
-        );
-        const data = await response.json();
-        setPro(data.products);
+        try {
+          const response = await fetch(
+            `https://dummyjson.com/products?skip=${index * 20}&limit=35`,
+          );
+          const data = await response.json();
+          setPro(data.products);
+        } catch (err) {
+          alert(err.message);
+        }
       };
       fetchdata();
     },
@@ -102,6 +106,9 @@ const Postmain = () => {
               wishItem={wishItem}
               valueForWishlist={valueForWishlist}
               handleRemove={handleRemove}
+              index={index}
+              setIndex={setIndex}
+              setPro={setPro}
             />
           }
         />

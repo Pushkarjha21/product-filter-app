@@ -13,7 +13,7 @@ const Section1upper = (props) => {
   return (
     <div id="upper-section">
       <div className="head">
-        <h1 id="title">Product Lists and Filter App</h1>
+        <h1 id="title">Product Lists App</h1>
         <div id="upper-right">
           <span id="upper-span">
             <button onClick={cartSection} className="btn1">
